@@ -39,7 +39,7 @@ class BST {
 
     removeDuplicates(arr){
         const newArr = [];
-        arr.sort();
+        arr.sort((a, b) => a - b);
 
         for (const el of arr){
             if (!newArr.includes(el)){
@@ -49,6 +49,38 @@ class BST {
 
         return newArr;
     }
+
+
+    insert(value){
+
+        if(this.root === null){
+            this.root = new Node(value);
+            return;
+        }
+        
+        let cur = this.root;
+        let prev = null;
+
+        while (cur){
+            if (value < cur.value){
+                prev = cur;
+                cur = cur.left;
+            } else if (value > cur.value){
+                prev = cur;
+                cur = cur.right;
+            } else {
+                return;
+            }
+        }
+
+        const node = new Node(value);
+        value < prev.value ? prev.left = node : prev.right = node;
+    }   
+
+    delete(value){
+
+    }
+
 
     print(){
 
