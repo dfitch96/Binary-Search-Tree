@@ -160,8 +160,26 @@ class BST {
 
     }
 
+    height(){
+        
+        const dfs = function(node){
+            if(!node){
+                return 0;
+            }
+
+            return 1 + Math.max(dfs(node.left), dfs(node.right));
+
+        }
+
+        return Math.max(dfs(this.root.left), dfs(this.root.right));
+        
+    }
+
 
     inOrder(callback){
+        if(!callback){
+            throw new Error("callback undefined");
+        }
        
        const inOrderRec = function(node, callback){
             if(!node){
@@ -178,6 +196,9 @@ class BST {
     }
 
     postOrder(callback){
+        if(!callback){
+            throw new Error("callback undefined");
+        }
 
         const postOrderRec = function(node, callback){
             if(!node){
@@ -193,7 +214,9 @@ class BST {
     }
 
     preOrder(callback){
-
+        if(!callback){
+            throw new Error("callback undefined");
+        }
 
         const preOrderRec = function(node, callback){
             if(!node){

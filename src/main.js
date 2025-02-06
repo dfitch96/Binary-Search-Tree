@@ -11,9 +11,7 @@ bst.insert(18);
 bst.insert(9);
 bst.insert(6);
 bst.print();
-bst.preOrder((node) => {
-    console.log(node.value);
-});
+console.log(bst.height());
 
 
 
