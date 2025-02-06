@@ -1,13 +1,13 @@
 const {Node, BST} = require('./bst');
 
-let bst = new BST([0, 1, 3, 4, 6, 7, 10, 12]);
+let bst = new BST([]);
+bst.insert(50);
+bst.insert(30);
+bst.insert(70);
+bst.insert(20);
+bst.insert(40);
+bst.insert(80);
 bst.print();
-console.log('\n');
-bst.insert(11);
+bst.delete(70);
 bst.print();
-console.log('\n');
-bst.insert(2);
-bst.print();
-console.log('\n');
-bst.insert(-1);
-bst.print();
+

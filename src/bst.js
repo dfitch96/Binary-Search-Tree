@@ -61,16 +61,13 @@ class BST {
         let cur = this.root;
         let prev = null;
 
-        while (cur){
+        while(cur && cur.val !== value){
+            prev = cur;
             if (value < cur.value){
-                prev = cur;
                 cur = cur.left;
             } else if (value > cur.value){
-                prev = cur;
                 cur = cur.right;
-            } else {
-                return;
-            }
+            } 
         }
 
         const node = new Node(value);
@@ -78,6 +75,37 @@ class BST {
     }   
 
     delete(value){
+        if (this.root === null){
+            return;
+        }
+
+        let cur = this.root;
+        let prev = null;
+        while(cur && cur.value !== value){
+            prev = cur;
+            if(value < cur.value){
+                cur = cur.left;
+            } else if ( value > cur.value){
+                cur = cur.right;
+            } 
+        }
+
+        if(cur.left === null || cur.right === null){
+            const subTree = cur.left === null ? cur.right : cur.left;
+
+            if(prev === null){
+                this.root = subTree;
+            }
+
+            if(cur === prev.left){
+                prev.left = subTree;
+            } else if (cur === prev.right){
+                prev.right = subTree;
+            }
+        } else{
+            // find inorder successor
+
+        }
 
     }
 
