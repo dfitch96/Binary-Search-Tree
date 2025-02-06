@@ -162,14 +162,49 @@ class BST {
 
 
     inOrder(callback){
-        
-    }
+       
+       const inOrderRec = function(node, callback){
+            if(!node){
+                return;
+            }
 
-    preOrder(callback){
+            inOrderRec(node.left, callback);
+            callback(node);
+            inOrderRec(node.right, callback);
+       }
+
+        inOrderRec(this.root, callback);
 
     }
 
     postOrder(callback){
+
+        const postOrderRec = function(node, callback){
+            if(!node){
+                return;
+            }
+            postOrderRec(node.left, callback);
+            postOrderRec(node.right, callback);
+            callback(node);
+       }
+
+        postOrderRec(this.root, callback);
+
+    }
+
+    preOrder(callback){
+
+
+        const preOrderRec = function(node, callback){
+            if(!node){
+                return;
+            }
+            callback(node);
+            preOrderRec(node.left, callback);
+            preOrderRec(node.right, callback);
+        }
+
+        preOrderRec(this.root, callback);
 
     }
 
