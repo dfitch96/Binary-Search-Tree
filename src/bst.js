@@ -103,8 +103,21 @@ class BST {
                 prev.right = subTree;
             }
         } else{
-            // find inorder successor
+            
+            let p = null;
+            let successor = cur.right;
+            while(successor.left){
+                p = successor;
+                successor = successor.left;
+            }
 
+            if(p !== null){
+                p.left = successor.right;
+            } else{ 
+                cur.right = successor.right;
+            }
+            
+            cur.value = successor.value;
         }
 
     }
