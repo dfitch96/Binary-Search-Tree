@@ -11,9 +11,10 @@ bst.insert(18);
 bst.insert(9);
 bst.insert(6);
 bst.print();
-bst.delete(5);
-console.log('\n');
-bst.print();
+bst.levelOrder((node) => {
+    console.log(node.value);
+});
+
 
 
 
