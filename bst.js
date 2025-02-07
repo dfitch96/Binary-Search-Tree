@@ -2,6 +2,10 @@
 class Node{
 
     constructor(val){
+        if(typeof val !== "number"){
+            throw new Error("BST only supports numbers");
+        }
+
         this.value = val;
         this.left = null;
         this.right = null;
@@ -70,6 +74,10 @@ class BST {
 
 
     insert(value){
+
+        if(typeof value !== "number"){
+            throw new Error("BST only supports numbers");
+        }
 
         if(this.root === null){
             this.root = new Node(value);
