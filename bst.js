@@ -160,7 +160,10 @@ class BST {
 
     }
 
-    height(){
+    height(root){
+        if(!root){
+            return 0;
+        }
         
         const dfs = function(node){
             if(!node){
@@ -171,8 +174,28 @@ class BST {
 
         }
 
-        return Math.max(dfs(this.root.left), dfs(this.root.right));
+        return Math.max(dfs(root.left), dfs(root.right));
         
+    }
+
+    depth(node){
+        if(!node){
+            return null;
+        }
+
+        let numEdges = 0;
+        let cur = this.root;
+        while(cur && cur.value !== node.value){
+            if (node.value < cur.value){
+                cur = cur.left;
+            } else if (node.value > cur.value){
+                cur = cur.right;
+            }
+            numEdges++;
+        }
+
+        return numEdges++;
+
     }
 
 
@@ -229,6 +252,35 @@ class BST {
 
         preOrderRec(this.root, callback);
 
+    }
+
+    isBalanced(){
+        if(!this.root){
+            return true;
+        }
+
+        return Math.abs(this.height(this.root.left) - this.height(this.root.right)) <= 1 ? true : false;
+    }
+
+    rebalance(){
+
+        if(!this.root){
+            return;
+        }
+
+        const dfs = function(node, arr){
+            if(!node){
+                return;
+            }
+
+            dfs(node.left, arr);
+            arr.push(node.value);
+            dfs(node.right, arr);
+        }
+
+        const res = [];
+        dfs(this.root, res);
+        this.root = this.buildTree(res);
     }
 
 
